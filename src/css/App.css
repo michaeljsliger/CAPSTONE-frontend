@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #e3e3e3;
+}
+
+.App-content {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.header-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px;
+  margin: 18px;
+  background-color: #9c9c9c;
+}
+
+.link-container {
+  padding: 8px;
+  text-decoration: none;
+}
+
