@@ -1,12 +1,15 @@
+import img from '../../images/36chevy_1.jpg';
 const STORE = [
     {
+        id: 'aaa',
         name: 'An item',
-        imgs: [],
+        imgs: [img],
         description: 'lorem ipsum mf',
     },
     {
+        id: 'bbb',
         name: 'Another item',
-        imgs: [],
+        imgs: [img],
         description: 'tedium is present',
     }
 ]
