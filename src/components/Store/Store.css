@@ -1,0 +1,9 @@
+.store-container {
+    background-color: #d6b7b7;
+}
+
+.store-list-item {
+    list-style: none;
+    padding: 8px;
+    margin: 4px 0;
+}
