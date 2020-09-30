@@ -1,4 +1,6 @@
 import img from '../../images/36chevy_1.jpg';
+
+
 const STORE = [
     {
         id: 'aaa',

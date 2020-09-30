@@ -6,10 +6,10 @@ class StoreItem extends React.Component {
         return (
             <div>
                 <div>
-                    {this.props.obj.name}
+                    {this.props.obj.name} | ${this.props.obj.price}
                 </div>
                 <div>
-                    <img src={this.props.obj.imgs[0]} alt="Pic lost in Ether"/>
+                    <img src={this.props.obj.image} alt="Pic lost in Ether"/>
                 </div>
                 <div>
                     {this.props.obj.description}

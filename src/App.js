@@ -11,13 +11,21 @@ import PresentedItem from './components/Store/PresentedItem';
 import StoreContext from './components/Store/StoreContext';
 import STORE from './components/Store/tempStore';
 
+const SERVER_URL = 'http://localhost:8000'
+
 class App extends React.Component {
   state = {
     items: []
   }
 
   componentDidMount() {
-    this.setState({ items: STORE })
+    fetch(`${SERVER_URL}/store`)
+      .then(res => res.json())
+      .then(json => {
+        // fetch call to set json info as items
+        return this.setState({ items: json })
+      }).catch(e => console.log(e))
+    
   }
 
   render() {
@@ -41,6 +49,7 @@ class App extends React.Component {
               <Route path='/about' exact component={About} />
               <StoreContext.Provider value={contextValue}>
                 <Route path='/store' exact component={Store} />
+                {/* login only ^^^ */}
                 <Route path='/store/:id' render={(props) => <PresentedItem {...props} />} />
               </StoreContext.Provider>
               <Route path='/contact' exact><Contact /></Route>
