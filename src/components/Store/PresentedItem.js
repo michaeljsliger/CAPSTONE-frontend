@@ -1,4 +1,5 @@
 import React from 'react';
+import API_SERVICES from '../../services/api-services';
 import StoreContext from './StoreContext';
 
 
@@ -22,6 +23,9 @@ class PresentedItem extends React.Component {
                 </div>
                 <div>
                     {item.description}
+                </div>
+                <div>
+                    <button onClick={() => API_SERVICES.deleteItemByID(this.props.match.params.id)}>Delete</button>
                 </div>
             </div>
 

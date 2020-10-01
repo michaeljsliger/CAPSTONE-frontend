@@ -9,9 +9,10 @@ import Contact from './components/Contact/Contact';
 import PresentedItem from './components/Store/PresentedItem';
 // import context
 import StoreContext from './components/Store/StoreContext';
-import STORE from './components/Store/tempStore';
-
-const SERVER_URL = 'http://localhost:8000'
+import AddItemForm from './components/AddItemForm/AddItemForm';
+import Header from './components/Header/Header.js';
+import API_SERVICES from './services/api-services';
+import LoginForm from './components/loginForm/LoginForm';
 
 class App extends React.Component {
   state = {
@@ -19,13 +20,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${SERVER_URL}/store`)
-      .then(res => res.json())
+    API_SERVICES.getAllItems()
       .then(json => {
-        // fetch call to set json info as items
-        return this.setState({ items: json })
-      }).catch(e => console.log(e))
-    
+        this.setState({items: json});
+      })
   }
 
   render() {
@@ -36,24 +34,21 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <div className="header-container">
-            <div className="header-text">NORTH CREEK AUTO FABRICATION</div>
-            <Link to='/' className="link-container">Home</Link>
-            <Link to='/about' className="link-container">About</Link>
-            <Link to='/store' className="link-container">Store</Link>
-            <Link to='/contact' className="link-container">Contact</Link>
-          </div>
+          <Header />
           <div className='App-content'>
             <Switch>
+                          {/* error */}
               <Route path='/' exact component={Home} />
+              <Route path='/store/add-item' component={AddItemForm} />
+              <Route path='/login' exact component={LoginForm} />
               <Route path='/about' exact component={About} />
-              <StoreContext.Provider value={contextValue}>
-                <Route path='/store' exact component={Store} />
-                {/* login only ^^^ */}
-                <Route path='/store/:id' render={(props) => <PresentedItem {...props} />} />
-              </StoreContext.Provider>
+                <StoreContext.Provider value={contextValue}>
+                  <Route path='/store' exact component={Store} />
+                  {/* login only ^^^ */}
+                  <Route path='/store/:id' render={(props) => <PresentedItem {...props} />} />
+                </StoreContext.Provider>
               <Route path='/contact' exact><Contact /></Route>
-              {/* error */}
+              {/* 404 not found page */}
             </Switch>
           </div>
         </div>
