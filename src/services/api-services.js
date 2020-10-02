@@ -24,7 +24,7 @@ const API_SERVICES = {
                 }
                 return res
             })
-            .catch(e => console.log(e.message))
+            .catch(e => e);
     },
     getAllItems: () => {
         return fetch(`${config.SERVER_URL}/store`)
@@ -33,7 +33,7 @@ const API_SERVICES = {
             }).then(json => {
                 return json
             })
-            .catch(e => console.log(e))
+            .catch(e => e);
     },
     deleteItemByID: (id) => {
         return fetch(`${config.SERVER_URL}/store/${id}`, {
@@ -41,6 +41,26 @@ const API_SERVICES = {
         }).then(res => {
             window.location.href = '/store';
         })
+        .catch(e => e);
+    },
+    attemptLogin: (bodyObj) => {
+        return fetch(`${config.SERVER_URL}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(bodyObj)
+        })
+        .then(res => {
+            if (res.ok) return res.json();
+            else {
+                return res = {
+                    message: 'Username or Password is incorrect',
+                    status: 401
+                }
+            }
+        })
+        
     }
 
 }

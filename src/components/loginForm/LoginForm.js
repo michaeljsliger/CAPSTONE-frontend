@@ -1,11 +1,13 @@
 import React from 'react';
 import authService from '../../services/login-token-service';
+import API_SERVICES from '../../services/api-services';
 
 class LoginForm extends React.Component {
 
     state = {
         username: '',
         password: '',
+        error: null
     }
 
     handleUsernameChange = (val) => {
@@ -14,24 +16,52 @@ class LoginForm extends React.Component {
     handlePasswordChange = (val) => {
         this.setState({ password: val })
     }
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
         const { username, password } = this.state;
-        const authtoken = authService.makeBasicAuthToken(username, password);
-        authService.storeAuthToken(authtoken);
-        // fetch call to server_url/login
-        // compare state values to database values
+        const bodyObj = {
+            username,
+            password
+        }
+
+        const response = await API_SERVICES.attemptLogin(bodyObj)
+        console.log(response);
+
+        if (typeof response === 'object') {
+            console.log(response);
+            if (response.status == 401) {
+                this.setState({
+                    username: '',
+                    password: '',
+                    error: response.message
+                })
+            }
+            return undefined;
+        }
 
         this.setState({
             username: '',
-            password: ''
+            password: '',
+            error: null,
         })
-        window.location.href = "/store";
+
+        authService.storeAuthToken(response);
+        window.location.href = '/store';
+        
+        // res 200 ok, store authService.storeAuthToken(res.body?)
+        // !res.ok display error and setstate error
+        // on success, redirect to store!
+
+        
+        // window.location.href = "/store";
     }
 
     render() {
         return (
             <div>
+                <div>
+                    {this.state.error && <p className="error-text">{this.state.error}</p>}
+                </div>
                 <form onSubmit={(e) => this.handleSubmit(e)}>
                     <input type="text"
                         name="username" id="username"

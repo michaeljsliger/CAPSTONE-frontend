@@ -28,8 +28,6 @@ class AddItemForm extends React.Component {
 
         return API_SERVICES.submitPostToAPI(state)
             .then(json => {
-
-                console.log(json);
                 this.setState({
                     name: '',
                     price: 0,
