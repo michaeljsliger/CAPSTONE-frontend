@@ -1,18 +1,23 @@
 import React from 'react';
 import './css/App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import components
 import Home from './components/Home/Home';
 import Store from './components/Store/Store';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import PresentedItem from './components/Store/PresentedItem';
-// import context
-import StoreContext from './components/Store/StoreContext';
 import AddItemForm from './components/AddItemForm/AddItemForm';
 import Header from './components/Header/Header.js';
-import API_SERVICES from './services/api-services';
 import LoginForm from './components/loginForm/LoginForm';
+import NotFound from './components/NotFound/NotFound';
+// import context
+import StoreContext from './components/Store/StoreContext';
+// import services
+import API_SERVICES from './services/api-services';
+import PrivateRoute from './routers/PrivateRoute';
+import PublicRoute from './routers/PublicRoute';
+
 
 class App extends React.Component {
   state = {
@@ -22,7 +27,7 @@ class App extends React.Component {
   componentDidMount() {
     API_SERVICES.getAllItems()
       .then(json => {
-        this.setState({items: json});
+        this.setState({ items: json });
       })
   }
 
@@ -37,18 +42,16 @@ class App extends React.Component {
           <Header />
           <div className='App-content'>
             <Switch>
-                          {/* error */}
               <Route path='/' exact component={Home} />
-              <Route path='/store/add-item' component={AddItemForm} />
-              <Route path='/login' exact component={LoginForm} />
               <Route path='/about' exact component={About} />
-                <StoreContext.Provider value={contextValue}>
-                  <Route path='/store' exact component={Store} />
-                  {/* login only ^^^ */}
-                  <Route path='/store/:id' render={(props) => <PresentedItem {...props} />} />
-                </StoreContext.Provider>
               <Route path='/contact' exact><Contact /></Route>
-              {/* 404 not found page */}
+              <PublicRoute path='/login' exact component={LoginForm} />
+              <PrivateRoute path='/store/add-item' exact component={AddItemForm} />
+              <StoreContext.Provider path="/store" value={contextValue}>
+                <PrivateRoute path='/store' exact component={Store} />
+                <PrivateRoute path='/store/:id' exact component={PresentedItem} />
+              </StoreContext.Provider>
+              <Route component={NotFound} />
             </Switch>
           </div>
         </div>

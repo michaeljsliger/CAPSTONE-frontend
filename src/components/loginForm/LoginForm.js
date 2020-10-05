@@ -25,10 +25,8 @@ class LoginForm extends React.Component {
         }
 
         const response = await API_SERVICES.attemptLogin(bodyObj)
-        console.log(response);
 
         if (typeof response === 'object') {
-            console.log(response);
             if (response.status == 401) {
                 this.setState({
                     username: '',
@@ -67,12 +65,21 @@ class LoginForm extends React.Component {
                         name="username" id="username"
                         placeholder="username"
                         onChange={e => this.handleUsernameChange(e.target.value)} />
-                    <input type="text"
+                    <input type="password"
                         name="password" id="password"
                         placeholder="password"
                         onChange={e => this.handlePasswordChange(e.target.value)} />
                     <button type="submit">Submit</button>
                 </form>
+                <div>
+                    Users Available for Testing: 
+                    <ul>
+                        <li>username: michael | password: password</li>
+                        <li>username: test-user | { `{ password }` }</li>
+                        <li>username: test-user-2 | { `{ password }` }</li>
+                        <li>username: test-user-3 | { `{ password }` }</li>
+                    </ul>
+                </div>
             </div>
         )
     }

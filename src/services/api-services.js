@@ -1,17 +1,16 @@
+import authService from './login-token-service';
 import config from '../config';
 
 const API_SERVICES = {
     submitPostToAPI:  (bodyObj) => {
-        console.log('bodyObj', bodyObj);
         const postObj = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authService.getAuthToken()}`
             },
             body: JSON.stringify(bodyObj)
         }
-        console.log('postObj', postObj);
-
         const error = {
             message: ''
         }
@@ -37,7 +36,10 @@ const API_SERVICES = {
     },
     deleteItemByID: (id) => {
         return fetch(`${config.SERVER_URL}/store/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${authService.getAuthToken()}`
+            }
         }).then(res => {
             window.location.href = '/store';
         })
