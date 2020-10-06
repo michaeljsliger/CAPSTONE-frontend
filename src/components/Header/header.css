@@ -1,0 +1,20 @@
+.header-container {
+    display: flex;
+}
+
+.header-text {
+    color: #b3e4fa
+}
+
+@media all and (max-width: 600px) {
+    .header-container {
+        flex-direction: column;
+    }
+
+    .link-container {
+        font-size: 12px;
+    }
+    .header-links {
+        margin: 2px;
+    }
+}

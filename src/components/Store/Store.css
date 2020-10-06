@@ -1,14 +1,105 @@
-.store-container {
-    height: 100vh;
-    background-color: #d6b7b7;
+* {
+    text-align: center;
 }
+
+.store-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.store-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #70798c;
+    padding: 18px;
+}
+
 
 .store-list-item {
     list-style: none;
-    padding: 8px;
-    margin: 4px 0;
+    width: 50%;
+    margin: 10px 0;
+    background-color: #f5f1ed;
+    border-radius: 8px;
+    box-shadow: 10px 12px 18px black;
+}
+
+.store-list-item-nested {
+    color: black;
+    text-decoration: none;
+    display: flex; 
+    flex-direction: column;
+    
+}
+
+.store-list-item-header {
+    padding: 4px;
+    background-color: #e3e3e3;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.list-item-link {
+    text-decoration: none;
+}
+
+.store-list-item-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.store-list-item-image img {
+    width: 100%;
+}
+
+.store-list-item-desc {
+    padding: 4px;
+    height: 10vh;
+    margin: 0 0 10px 0;
+    background-color: #e3e3e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.store-list-item-desc p {
+    padding: 12px;
+    border-radius: 30px;
+    box-shadow: inset -6px -6px 9px #fff, inset 3px 3px 9px rgba(0, 0, 0, 0.644);
 }
 
 img {
     width: 150px;
+}
+
+.store-list-item-footer {
+    padding: 0 0 12px 0;
+}
+
+.go-back-button {
+    margin: 0 0 8px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+.go-back-button button {
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.add-item-button {
+    margin: 4px 0 0 0;
+    padding: 8px;
+    border-radius: 30px;
+}
+
+.delete-button-container {
+    margin: 10px;
+}
+
+.delete-button-container button {
+    padding: 8px;
+    border-radius: 10px;
 }

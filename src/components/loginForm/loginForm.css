@@ -1,0 +1,27 @@
+
+
+
+.login-error {
+    background-color: #fff;
+}
+
+.error-text {
+    color: red;
+}
+
+ul {
+    list-style: none;
+}
+
+.user-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-list li {
+    display: flex;
+    margin: 8px;
+    color: white;
+}

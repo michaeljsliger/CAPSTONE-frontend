@@ -1,6 +1,7 @@
 import React from 'react';
 import authService from '../../services/login-token-service';
 import API_SERVICES from '../../services/api-services';
+import './loginForm.css';
 
 class LoginForm extends React.Component {
 
@@ -57,28 +58,34 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    {this.state.error && <p className="error-text">{this.state.error}</p>}
+            <div className="login-page">
+                <div className="login-error">
+                    {this.state.error && <p className="error-text">{this.state.error}; refresh may be necessary</p>}
                 </div>
                 <form onSubmit={(e) => this.handleSubmit(e)}>
-                    <input type="text"
+                    <div className="input-container">
+                        <label htmlFor="username">Username: </label>
+                        <input type="text"
                         name="username" id="username"
                         placeholder="username"
                         onChange={e => this.handleUsernameChange(e.target.value)} />
+                        </div>
+                        <div className="input-container">
+                    <label htmlFor="password">Password: </label>
                     <input type="password"
                         name="password" id="password"
                         placeholder="password"
                         onChange={e => this.handlePasswordChange(e.target.value)} />
+                        </div>
                     <button type="submit">Submit</button>
                 </form>
                 <div>
                     Users Available for Testing: 
-                    <ul>
-                        <li>username: michael | password: password</li>
-                        <li>username: test-user | { `{ password }` }</li>
-                        <li>username: test-user-2 | { `{ password }` }</li>
-                        <li>username: test-user-3 | { `{ password }` }</li>
+                    <ul className="user-list">
+                        <li>username: michael || password: password</li>
+                        <li>test-user   || { `{ password }` }</li>
+                        <li>test-user-2 || { `{ password }` }</li>
+                        <li>test-user-3 || { `{ password }` }</li>
                     </ul>
                 </div>
             </div>

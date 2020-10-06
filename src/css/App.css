@@ -5,16 +5,22 @@
 }
 
 body {
-  background-color: #e3e3e3;
+  background-color: #a99985;
 
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .App-content {
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
-  background-color: #e3e3e3;
+  background-color: #a99985;
 
 }
 
@@ -24,7 +30,8 @@ body {
   align-items: center;
   padding: 8px;
   margin: 18px;
-  background-color: #9c9c9c;
+  background-color: #252323;
+  border-radius: 5px;
 }
 
 .header-text {
@@ -34,5 +41,10 @@ body {
 .link-container {
   padding: 8px;
   text-decoration: none;
+  color: white;
+}
+
+.footer-container {
+  height: 60px;
 }
 

@@ -4,17 +4,26 @@ class StoreItem extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    {this.props.obj.name} | ${this.props.obj.price}
+            <div className="store-list-item-nested">
+                <div className="store-list-item-header">
+                    <h2>
+                        <div>
+                            {this.props.obj.name}
+                        </div>
+                        <div>
+                        ${this.props.obj.price}
+                        </div>
+                    </h2>
                 </div>
-                <div>
+                <div className="store-list-item-image">
                     <img src={this.props.obj.image} alt="Pic lost in Ether" />
                 </div>
-                <div>
-                    {this.props.obj.description}
+                <div className="store-list-item-desc">
+                    <p>
+                        {this.props.obj.description}
+                    </p>
                 </div>
-                <div>
+                <div className="store-list-item-footer">
                     Posted by {this.props.obj.userNickname}
                 </div>
             </div>

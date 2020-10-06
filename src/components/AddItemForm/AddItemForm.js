@@ -1,5 +1,6 @@
 import React from 'react';
 import API_SERVICES from '../../services/api-services';
+import './addItemForm.css';
 
 class AddItemForm extends React.Component {
     // must be logged in, will handle that in routing
@@ -43,45 +44,78 @@ class AddItemForm extends React.Component {
     render() {
         return (
             <div>
+                <h2>Add an Item</h2>
                 <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                     <div>
-
-                        <label htmlFor="item_name">Item Name:</label>
-                        <input type="text"
-                            name="item_name" id="item_name" required
-                            onChange={(event) => this.handleNameChange(event.target.value)}
-                        />
-                        <label htmlFor="item_price">Item Price:</label>
-                        <input type="number"
-                            name="item_price" id="item_price" required
-                            onChange={(event) => this.handlePriceChange(event.target.value)}
-                        />
-                        <label htmlFor="item_image_link">Link to an image:</label>
-                        <input type="text"
-                            name="item_image_link" id="item_image_link"
-                            onChange={(event) => this.handleImageLinkChange(event.target.value)}
-                        />
-                        <label htmlFor="item_description">Item Description</label>;
-                    <input type="text"
-                            name="item_description" id="item_description"
-                            onChange={(event) => this.handleDescChange(event.target.value)}
-                        />
+                        <div className="input-container">
+                            <label htmlFor="item_name">Item Name:</label>
+                            <input type="text"
+                                name="item_name" id="item_name" required
+                                placeholder="name"
+                                onChange={(event) => this.handleNameChange(event.target.value)}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label htmlFor="item_price">Item Price:</label>
+                            <input type="number"
+                                name="item_price" id="item_price" required
+                                placeholder={9}
+                                onChange={(event) => this.handlePriceChange(event.target.value)}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label htmlFor="item_image_link">Link to an image:</label>
+                            <input type="text"
+                                name="item_image_link" id="item_image_link"
+                                pattern="^(https://)"
+                                placeholder="https://----.jpg"
+                                onChange={(event) => this.handleImageLinkChange(event.target.value)}
+                            />
+                        </div>
+                        <div className="input-container">
+                            <label htmlFor="item_description">Item Description</label>
+                            <input type="text"
+                                name="item_description" id="item_description"
+                                placeholder="lorem ipsum"
+                                onChange={(event) => this.handleDescChange(event.target.value)}
+                            />
+                        </div>
                     </div>
                     <button type="submit">Submit Item</button>
                 </form>
                 <div>
                     <h3>Your submission:</h3>
                     <div>
-                        Name: {this.state.name}
+                        <p>
+                            Name:
+                        </p>
+                        <p>
+                            {this.state.name}
+                        </p>
                     </div>
                     <div>
-                        Price: {this.state.price}
+                        <p>
+                            Price:
+                        </p>
+                        <p>
+                            {this.state.price}
+                        </p>
                     </div>
                     <div>
-                        Link: {this.state.image_link}
+                        <p>
+                            Link:
+                            </p>
+                        <p>
+                            {this.state.image_link}
+                        </p>
                     </div>
                     <div>
-                        Description: {this.state.description}
+                        <p>
+                            Description:
+                        </p>
+                        <p>
+                            {this.state.description}
+                        </p>
                     </div>
                 </div>
             </div>
