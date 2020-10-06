@@ -7,6 +7,7 @@ class LoginForm extends React.Component {
     state = {
         username: '',
         password: '',
+        // setState data breach?
         error: null
     }
 
