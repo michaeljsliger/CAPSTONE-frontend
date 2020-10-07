@@ -8,7 +8,7 @@ class Header extends React.Component {
     render() {
         return (
             <div className="header-container">
-                <div className="header-text">COMMUNITY DRIVEN STORE</div>
+                <div className="header-text">SATIRE STORE</div>
                 <div className="header-links">
                 <Link to='/' className="link-container">Home</Link>
                 <Link to='/about' className="link-container">About</Link>

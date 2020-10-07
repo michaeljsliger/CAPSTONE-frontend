@@ -28,6 +28,11 @@ class AddItemForm extends React.Component {
     handleSubmit = (event, state) => {
         event.preventDefault();
 
+        if (!this.state.image_link.split(':')[0].includes('https')) {
+            alert('Image must be a correctly formatted link')
+            return undefined 
+        }
+
         return API_SERVICES.submitPostToAPI(state)
             .then(json => {
                 this.setState({
@@ -67,7 +72,6 @@ class AddItemForm extends React.Component {
                             <label htmlFor="item_image_link">Link to an image:</label>
                             <input type="text"
                                 name="item_image_link" id="item_image_link"
-                                pattern="^(https://)"
                                 placeholder="https://----.jpg"
                                 onChange={(event) => this.handleImageLinkChange(event.target.value)}
                             />

@@ -85,7 +85,6 @@ class LoginForm extends React.Component {
                         <li>username: michael || password: password</li>
                         <li>test-user   || { `{ password }` }</li>
                         <li>test-user-2 || { `{ password }` }</li>
-                        <li>test-user-3 || { `{ password }` }</li>
                     </ul>
                 </div>
             </div>
