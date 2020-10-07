@@ -4,4 +4,3 @@ export default {
     TOKEN: 'CAPSTONE-auth-token',
 };
 
-console.log(SERVER_URL);
