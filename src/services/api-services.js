@@ -46,7 +46,6 @@ const API_SERVICES = {
         .catch(e => e);
     },
     attemptLogin: (bodyObj) => {
-        console.log(config.SERVER_URL);
         return fetch(`${config.SERVER_URL}/login`, {
             method: 'POST',
             headers: {

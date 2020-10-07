@@ -13,13 +13,6 @@ class Store extends React.Component {
         return (
             <StoreContext.Consumer>
                 {(context) => {
-                    if (typeof context.items !== 'array') {
-                        context.items = [];
-                    }
-
-                    if (context.items.length === 0) {
-                        return (<NotFound />)
-                    }
                     const contentArr = context.items.map((el, index) => {
                         return <li key={index} className="store-list-item"><Link to={`/store/${el.id}`} className="list-item-link"><StoreItem obj={el} /></Link></li>
                     }) ||  [];
