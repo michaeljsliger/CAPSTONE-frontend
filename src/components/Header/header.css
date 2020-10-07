@@ -1,5 +1,6 @@
 .header-container {
     display: flex;
+    flex-direction: column;
 }
 
 .header-text {
@@ -7,9 +8,7 @@
 }
 
 @media all and (max-width: 600px) {
-    .header-container {
-        flex-direction: column;
-    }
+    
 
     .link-container {
         font-size: 12px;

@@ -6,9 +6,20 @@ export default class NotFound extends React.Component {
         return (
             <div>
                 <div>
-                    404 NOT FOUND.
+                    <h3>
+                        404 NOT FOUND
+                        </h3>
+                    <div>
+                        <p>Either the item does not exist, or the application is not connected to the server</p>
+                    </div>
                 </div>
-                <Link to="/store"><button>Go Back</button></Link>
+                <div>
+                    <Link to="/store"><button>Go Back</button></Link>
+                </div>
+                <div>
+                    <Link to="/store/add-item"><button>Add an Item</button></Link>
+                </div>
+
             </div>
         )
     }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import StoreContext from './StoreContext';
 import Footer from '../Footer/Footer';
 import './Store.css';
+import NotFound from '../NotFound/NotFound';
 
 
 class Store extends React.Component {
@@ -12,9 +13,18 @@ class Store extends React.Component {
         return (
             <StoreContext.Consumer>
                 {(context) => {
+                    if (typeof context.items !== 'array') {
+                        context.items = [];
+                    }
+
+                    if (context.items.length === 0) {
+                        return (<NotFound />)
+                    }
                     const contentArr = context.items.map((el, index) => {
                         return <li key={index} className="store-list-item"><Link to={`/store/${el.id}`} className="list-item-link"><StoreItem obj={el} /></Link></li>
-                    })
+                    }) ||  [];
+
+                    
                     return (
                         < div className="store-container" >
                             <h2>Store</h2>

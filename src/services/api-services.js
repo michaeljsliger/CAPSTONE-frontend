@@ -19,7 +19,7 @@ const API_SERVICES = {
             .then(res => {
                 if (!res.ok) {
                     error.message = res.message
-                    throw error;
+                    return error;
                 }
                 return res
             })
