@@ -1,6 +1,9 @@
 .header-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
 }
 
 .header-text {
@@ -8,8 +11,6 @@
 }
 
 @media all and (max-width: 600px) {
-    
-
     .link-container {
         font-size: 12px;
     }

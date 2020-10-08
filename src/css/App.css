@@ -6,22 +6,34 @@
 
 body {
   background-color: #a99985;
-
 }
+
 
 .App {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 
+
 .App-content {
-  height: 100vh;
-  width: 100vw;
+  margin-top: 8px;
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #a99985;
+}
 
+.header-container-1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-container {
@@ -48,3 +60,19 @@ body {
   height: 60px;
 }
 
+input {
+  position: relative;
+  width: 120px;
+  height: 25px;
+}
+form {
+  background-color: #bdb1a2;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px;
+  padding: 22px;
+  border-radius: 30px;
+  box-shadow: inset -6px -6px 6px rgb(46, 46, 46), inset 3px 3px 9px rgba(0, 0, 0, 0.644);
+}

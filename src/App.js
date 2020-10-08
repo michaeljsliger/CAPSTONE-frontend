@@ -39,7 +39,9 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <Header />
+          <div className="header-container-1">
+            <Header />
+          </div>
           <div className='App-content'>
             <Switch>
               <Route path='/' exact component={Home} />
