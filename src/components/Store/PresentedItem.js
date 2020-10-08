@@ -6,7 +6,21 @@ import NotFound from '../NotFound/NotFound';
 import Footer from '../Footer/Footer';
 
 class PresentedItem extends React.Component {
+    state = {
+        error: null,
+    }
 
+    handleDeleteClick = async (event, id) => {
+        event.preventDefault();
+
+        const results = await API_SERVICES.deleteItemByID(id);
+
+        if (results.status == 401) {
+            this.setState({error: 'Only the user who posted this item may delete it'})
+        } else {
+            this.setState({ error: '' })
+        }
+    }
 
     render() {
         return (
@@ -48,8 +62,9 @@ class PresentedItem extends React.Component {
                             <div>
                                 Posted by {item.userNickname}
                             </div>
+                            {this.state.error && <div className="error">{this.state.error}</div>}
                             <div className="delete-button-container">
-                                <button onClick={() => API_SERVICES.deleteItemByID(this.props.match.params.id)}>Delete</button>
+                                <button onClick={(event) => this.handleDeleteClick(event, this.props.match.params.id)}>Delete</button>
                             </div>
                             <div>
                                 <Footer />

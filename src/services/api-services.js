@@ -41,6 +41,10 @@ const API_SERVICES = {
                 'Authorization': `Bearer ${authService.getAuthToken()}`
             }
         }).then(res => {
+            if (!res.ok) {
+                return { status: res.status }
+            }
+
             window.location.href = '/store';
         })
         .catch(e => e);
