@@ -1,4 +1,4 @@
-https://capstone-sliger-9ucpsigtk.vercel.app/
+https://capstone-sliger.vercel.app/
 This project is a fullstack application created by Michael Sliger.
 The purpose of the project is to create a space where any registered*
 user can add, delete, and view items in the global store. 
