@@ -29,8 +29,8 @@ class AddItemForm extends React.Component {
         event.preventDefault();
 
         if (!this.state.image_link.split(':')[0].includes('https')) {
-            alert('Image must be a correctly formatted link')
-            return undefined 
+            alert('Image must be a correctly formatted link');
+            return undefined;
         }
 
         return API_SERVICES.submitPostToAPI(state)
@@ -42,7 +42,7 @@ class AddItemForm extends React.Component {
                     image_link: ''
                 })
             }).then(() => {
-                window.location.href = "/store"
+                window.location.href = "/store";
             })
     }
 

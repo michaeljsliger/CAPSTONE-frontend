@@ -11,6 +11,7 @@ import AddItemForm from './components/AddItemForm/AddItemForm';
 import Header from './components/Header/Header.js';
 import LoginForm from './components/loginForm/LoginForm';
 import NotFound from './components/NotFound/NotFound';
+import Register from './components/loginForm/Register'
 // import context
 import StoreContext from './components/Store/StoreContext';
 // import services
@@ -28,7 +29,7 @@ class App extends React.Component {
     API_SERVICES.getAllItems()
       .then(json => {
         this.setState({ items: json });
-      })
+      });
   }
 
   render() {
@@ -48,6 +49,7 @@ class App extends React.Component {
               <Route path='/about' exact component={About} />
               <Route path='/contact' exact><Contact /></Route>
               <PublicRoute path='/login' exact component={LoginForm} />
+              <PublicRoute path='/register' exact component={Register} />
               <PrivateRoute path='/store/add-item' exact component={AddItemForm} />
               <StoreContext.Provider path="/store" value={contextValue}>
                 <PrivateRoute path='/store' exact component={Store} />

@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
                     username: '',
                     password: '',
                     error: response.message
-                })
+                });
             }
             return undefined;
         }
@@ -88,7 +88,7 @@ class LoginForm extends React.Component {
                     </ul>
                 </div>
             </div>
-        )
+        );
     }
 }
 

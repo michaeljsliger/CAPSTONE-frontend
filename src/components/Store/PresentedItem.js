@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 class PresentedItem extends React.Component {
     state = {
         error: null,
+        contact_clicked: false,
     }
 
     handleDeleteClick = async (event, id) => {
@@ -16,10 +17,14 @@ class PresentedItem extends React.Component {
         const results = await API_SERVICES.deleteItemByID(id);
 
         if (results.status == 401) {
-            this.setState({error: 'Only the user who posted this item may delete it'})
+            this.setState({ error: 'Only the user who posted this item may delete it' })
         } else {
             this.setState({ error: '' })
         }
+    }
+
+    handleContactClick = () => {
+        this.setState({contact_clicked: !this.state.contact_clicked})
     }
 
     render() {
@@ -66,8 +71,17 @@ class PresentedItem extends React.Component {
                             <div className="delete-button-container">
                                 <button onClick={(event) => this.handleDeleteClick(event, this.props.match.params.id)}>Delete</button>
                             </div>
-                            <div>
-                                <Footer />
+                            <div className="footer-container">
+                                <button onClick={() => this.handleContactClick()}>
+                                    Contact
+                                </button>
+                                <div>
+                                    {this.state.contact_clicked && <div>
+                                        <h5>{item.userNickname}</h5>
+                                        <h6>#: 303-303-3030</h6>
+                                    <h6>email: {item.userNickname}@gmail.com</h6>
+                                        </div>}
+                                </div>
                             </div>
                         </div>
 

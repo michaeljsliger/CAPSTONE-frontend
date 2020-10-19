@@ -18,7 +18,7 @@ class Contact extends React.Component {
                 <p>2) Get used to floating</p>
                 <p>3) Don't Panic</p>
             </div>
-        )
+        );
     }
 }
 

@@ -27,7 +27,7 @@ class StoreItem extends React.Component {
                     Posted by {this.props.obj.userNickname}
                 </div>
             </div>
-        )
+        );
     }
 }
 
